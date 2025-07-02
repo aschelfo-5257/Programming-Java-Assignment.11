@@ -1,6 +1,8 @@
 /**
  * Demonstrates pattern matching in switch statements (Java 17+).
  * Prints a specific message based on the input object's type.
+ *
+ * Requires Java 17 or newer for pattern matching in switch statements.
  */
 public class Pattern {
 
@@ -8,16 +10,23 @@ public class Pattern {
    * Processes the given object and prints a message based on its type.
    */
   public static void process(Object obj) {
-    switch (obj) {
-      case String s -> System.out.println("String: " + s.toUpperCase());
-      case Integer i -> System.out.println("Integer squared: " + (i * i));
-      case Double d -> System.out.println("Double value: " + (d * 2));
-      case null -> System.out.println("Null value received");
-      default -> System.out.println("Unknown type: " + obj);
+    if (obj == null) {
+      System.out.println("Null value received");
+    } else if (obj instanceof String) {
+      String s = (String) obj;
+      System.out.println("String: " + s.toUpperCase());
+    } else if (obj instanceof Integer) {
+      Integer i = (Integer) obj;
+      System.out.println("Integer squared: " + (i * i));
+    } else if (obj instanceof Double) {
+      Double d = (Double) obj;
+      System.out.println("Double value: " + (d * 2));
+    } else {
+      System.out.println("Unknown type: " + obj);
     }
   }
 
-  /*
+  /**
    * The entry point of the program.
    * Demonstrates the {@link #process(Object)} method with various object types.
    *
