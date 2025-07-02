@@ -1,20 +1,11 @@
-/*
+/**
  * Demonstrates pattern matching in switch statements (Java 17+).
- * This class provides a static method to process different types of objects
- * and prints a message based on their runtime type.
+ * Prints a specific message based on the input object's type.
  */
 public class Pattern {
 
-  /*
-   * Processes the given object using pattern matching in a switch statement.
-   * <p>
-   * - If the object is a {@link String}, prints the string in uppercase.<br>
-   * - If the object is an {@link Integer}, prints its square.<br>
-   * - If the object is a {@link Double}, prints double its value.<br>
-   * - If {@code null}, prints a message indicating a null value.<br>
-   * - Otherwise, it prints a message for unknown types.
-   * </p>
-   * @param obj the object to process; can be String, Integer, Double, null, or other types
+  /**
+   * Processes the given object and prints a message based on its type.
    */
   public static void process(Object obj) {
     switch (obj) {
@@ -37,5 +28,6 @@ public class Pattern {
     process(4);
     process(12.5);
     process(null);
+    process(new Object()); // Shows extensibility
   }
 }
