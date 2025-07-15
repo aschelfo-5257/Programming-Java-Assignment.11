@@ -3,6 +3,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Locale;
 import java.util.stream.Collectors;
+import java.io.File;
+import java.io.IOException;
 import java.util.Comparator;
 /**
  * After filling the map, stream it and sort: wordCounts.entrySet() stream() sorted(Map.Entry.<String, Integer>comparingByValue() reversed())…
@@ -12,9 +14,9 @@ import java.util.Comparator;
 public class WordCounter {
   
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter String:");
-        String input = sc.nextLine().toLowerCase(Locale.ROOT);
+        String input = scanner.nextLine().toLowerCase(Locale.ROOT);
 
         int count = countNumberOfWords(input);
         System.out.println("Number of words in string = " + count);
@@ -38,9 +40,13 @@ public class WordCounter {
             .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
     }
 
-  private static int countNumberOfWords(String s) {
+    private static int countNumberOfWords(String s) {
         if (s == null || s.isBlank()) return 0;
         String[] words = s.trim().split("\\s+");
         return words.length;
+    }
+        public static void countWords(String filename) throws IOException {
+        Scanner input = new Scanner(new File(filename));
+        input.close(); // <-- put it right before the method exits
     }
 }
